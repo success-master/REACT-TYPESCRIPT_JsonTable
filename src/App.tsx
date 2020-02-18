@@ -11,7 +11,11 @@ function getRowsData() {
   return data.rows.map((row: any, index: any) => {
     return <tr key={index}>{
       keys.map((key, sub_index) => {
-        return <td key={sub_index}><div dangerouslySetInnerHTML={{ __html: row[key] }}></div></td>
+        if (row[key] != null) {
+          return <td key={sub_index}>
+            <div dangerouslySetInnerHTML={{ __html: row[key] }}></div>
+          </td>
+        }
       })}
     </tr>
   })
